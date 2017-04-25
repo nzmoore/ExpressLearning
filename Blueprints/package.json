@@ -1,0 +1,10 @@
+{
+  "name": "hello-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Saying hello",
+  "author": "Bill Moore",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
