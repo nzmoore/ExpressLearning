@@ -5,7 +5,11 @@
   "description": "Saying hello",
   "author": "Bill Moore",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "express": "^4.15.2",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "mongoose": "^4.9.6",
+    "passport-local": "^1.0.0",
+    "validator": "^7.0.0"
   }
 }
