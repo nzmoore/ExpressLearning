@@ -48,5 +48,6 @@ server.on("request", (req, res) => {
   }
 });
 
+require("./httpsniffer").sniffOn(server);
 server.listen(8124);
 console.log("Server listening to http://localhost:8124");
