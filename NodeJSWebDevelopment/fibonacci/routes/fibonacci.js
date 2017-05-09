@@ -13,10 +13,12 @@ router.get("/", function (req, res, next) {
         fibonum: undefined
       });
     } else {
-      res.render("fibonacci", {
-        title: "Calculate Finonacci numbers",
-        fibonum: num,
-        fiboval: math.fibonacci(num)
+      math.fibonacciAsync(num, (err, fiboval) => {
+        res.render("fibonacci", {
+          title: "Calculate Finonacci numbers",
+          fibonum: num,
+          fiboval: fiboval
+        });
       });
     }
   } else {
