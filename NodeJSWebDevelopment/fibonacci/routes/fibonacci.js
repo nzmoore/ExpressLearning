@@ -13,13 +13,26 @@ router.get("/", function (req, res, next) {
         fibonum: undefined
       });
     } else {
-      math.fibonacciAsync(num, (err, fiboval) => {
-        res.render("fibonacci", {
-          title: "Calculate Finonacci numbers",
-          fibonum: num,
-          fiboval: fiboval
+      // Use REST
+      var httpreq = require("http").request({
+        host: "localhost",
+        port: process.env.SERVERPORT,
+        path: "/fibonacci/"+Math.floor(num),
+        method: "GET"
+      },
+      httpresp => {
+        httpresp.on("data", chunk => {
+          var data = JSON.parse(chunk);
+          res.render("fibonacci", {
+            title: "Calculate Fibonacci numbers",
+            fibonum: num,
+            fiboval: data.result
+          });
         });
+        httpresp.on("error", err => { next(err); });
       });
+      httpreq.on("error", err => { next(err); });
+      httpreq.end();
     }
   } else {
     res.render("fibonacci", {
